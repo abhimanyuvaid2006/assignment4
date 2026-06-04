@@ -10,6 +10,23 @@
         <form id="surveyForm" action="https://httpbin.org/post" method="post">
             <h1>Survey Form</h1>
 
+            <div class="input-container">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" />
+            </div>
+
+            <div class="input-container">
+                <label>Favorite Genre:</label>
+
+                <input type="radio" id="action" name="genre" value="action" />
+                <label for="action">Action</label>
+
+                <input type="radio" id="comedy" name="genre" value="comedy" />
+                <label for="comedy">Comedy</label>
+
+                <input type="radio" id="drama" name="genre" value="drama" />
+                <label for="drama">Drama</label>
+            </div>
 
             <input type="submit" value="Submit" />
         </form>
