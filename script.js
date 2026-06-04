@@ -45,3 +45,19 @@ function validateForm() {
 
     return isValid;
 }
+
+function showInputError(inputElement, message) {
+    const errorDisplay = document.createElement("span");
+    errorDisplay.innerHTML = message;
+    errorDisplay.className = "error-message";
+    inputElement.parentElement.appendChild(errorDisplay);
+}
+
+function escapeHTML(input) {
+    return input
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+} 
