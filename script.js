@@ -1,8 +1,10 @@
 const form = document.getElementById("surveyForm");
 
 form.addEventListener("submit", (event) => {
+    
     event.preventDefault();
 
+ 
     const errorMessages = document.querySelectorAll(".error-message");
     errorMessages.forEach(error => {
         error.remove();
@@ -16,6 +18,10 @@ form.addEventListener("submit", (event) => {
     }
 });
 
+/**
+ * Validates all form inputs
+ * @returns {boolean} true if all inputs are valid, false otherwise
+ */
 function validateForm() {
     let isValid = true;
 
@@ -43,9 +49,49 @@ function validateForm() {
         isValid = false;
     }
 
+    const alphanumericPattern = /^[a-zA-Z0-9]+$/;
+
+    if (username !== "" && !alphanumericPattern.test(username)) {
+        showInputError(usernameInput, "Username can only contain letters and numbers.");
+        isValid = false;
+    }
+
+    const genreOptions = document.querySelectorAll("input[name='genre']");
+    let genreChecked = false;
+
+    genreOptions.forEach(option => {
+        if (option.checked) {
+            genreChecked = true;
+        }
+    });
+
+    if (!genreChecked) {
+        showInputError(document.getElementById("action"), "Please select a genre.");
+        isValid = false;
+    }
+
+    const movieOptions = document.querySelectorAll("input[name='movies']");
+    let movieChecked = false;
+
+    movieOptions.forEach(option => {
+        if (option.checked) {
+            movieChecked = true;
+        }
+    });
+
+    if (!movieChecked) {
+        showInputError(document.getElementById("hollywood"), "Please select at least one movie type.");
+        isValid = false;
+    }
+
     return isValid;
 }
 
+/**
+ * Creates and displays an error message next to the input
+ * @param {HTMLElement} inputElement - the input that failed validation
+ * @param {string} message - the error message to display
+ */
 function showInputError(inputElement, message) {
     const errorDisplay = document.createElement("span");
     errorDisplay.innerHTML = message;
@@ -53,6 +99,11 @@ function showInputError(inputElement, message) {
     inputElement.parentElement.appendChild(errorDisplay);
 }
 
+/**
+ * Replaces special characters with HTML entities to prevent XSS
+ * @param {string} input - the raw input value
+ * @returns {string} sanitized string
+ */
 function escapeHTML(input) {
     return input
         .replace(/&/g, "&amp;")
@@ -60,4 +111,4 @@ function escapeHTML(input) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-} 
+}
