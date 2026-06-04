@@ -13,6 +13,7 @@
             <div class="input-container">
                 <label for="fullName">Full Name:</label>
                 <input type="text" id="fullName" name="fullName" />
+                <span class="error-message" id="fullName-error"></span>
             </div>
 
             <div class="input-container">
@@ -26,7 +27,9 @@
 
                 <input type="radio" id="drama" name="genre" value="drama" />
                 <label for="drama">Drama</label>
+                <span class="error-message" id="genre-error"></span>
             </div>
+
             <div class="input-container">
                 <label>What type of movies do you like?</label>
 
@@ -38,8 +41,9 @@
 
                 <input type="checkbox" id="animated" name="movies" value="animated" />
                 <label for="animated">Animated</label>
+                <span class="error-message" id="movies-error"></span>
             </div>
- 
+
             <div class="input-container">
                 <label for="frequency">How often do you watch movies?</label>
                 <select id="frequency" name="frequency">
@@ -48,6 +52,25 @@
                     <option value="weekly">Weekly</option>
                     <option value="monthly">Monthly</option>
                 </select>
+                <span class="error-message" id="frequency-error"></span>
+            </div>
+
+            <div class="input-container">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" />
+                <span class="error-message" id="username-error"></span>
+            </div>
+
+            <div class="input-container">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" />
+                <span class="error-message" id="dob-error"></span>
+            </div>
+
+            <div class="input-container">
+                <label for="comments">Additional Comments:</label>
+                <textarea id="comments" name="comments"></textarea>
+                <span class="error-message" id="comments-error"></span>
             </div>
 
             <input type="submit" value="Submit" />
